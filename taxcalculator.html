@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Tax Calculator</title></head>
+<body>
+  <h2>Tax Calculator</h2>
+  <input type="number" id="amount" placeholder="Amount">
+  <input type="number" id="tax1" placeholder="Tax % 1">
+  <input type="number" id="tax2" placeholder="Tax % 2">
+  <button onclick="calculateTax()">Calculate</button>
+  <p id="result"></p>
+
+  <script>
+    function calculateTax() {
+      let amount = parseFloat(document.getElementById("amount").value);
+      let t1 = parseFloat(document.getElementById("tax1").value);
+      let t2 = parseFloat(document.getElementById("tax2").value);
+      let total = amount + (amount * t1) / 100 + (amount * t2) / 100;
+      document.getElementById("result").innerText = "Total after tax: ₹" + total.toFixed(2);
+    }
+  </script>
+</body>
+</html>
