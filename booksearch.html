@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head><title>Book Search</title></head>
+<body>
+  <h2>Book Search Simulator</h2>
+  <input type="text" id="bookName" placeholder="Enter book name">
+  <button onclick="search()">Search</button>
+  <ul id="bookResults"></ul>
+
+  <script>
+    function searchBook(bookName, callback) {
+      setTimeout(() => {
+        let results = [
+          { title: "JavaScript Mastery", available: true },
+          { title: "Eloquent JavaScript", available: false },
+          { title: "Learn JS in 7 Days", available: true },
+        ];
+        let filtered = results.filter(b => b.title.toLowerCase().includes(bookName.toLowerCase()));
+        callback(filtered);
+      }, 2000);
+    }
+
+    function search() {
+      let name = document.getElementById("bookName").value;
+      document.getElementById("bookResults").innerHTML = "<li>Searching...</li>";
+
+      searchBook(name, (results) => {
+        let list = results.map(b => `<li>${b.title} - ${b.available ? "Available" : "Not Available"}</li>`).join("");
+        document.getElementById("bookResults").innerHTML = list || "<li>No books found</li>";
+      });
+    }
+  </script>
+</body>
+</html>
