@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head><title>Countdown</title></head>
+<body>
+  <h2>Countdown Timer</h2>
+  <input type="number" id="countNum" placeholder="Start from">
+  <button onclick="startCountdown()">Start Countdown</button>
+  <p id="output"></p>
+
+  <script>
+    function countdown(n) {
+      if (n < 1) {
+        document.getElementById("output").innerText = "Blast Off!";
+        return;
+      }
+      document.getElementById("output").innerText = n;
+      setTimeout(() => countdown(n - 1), 1000);
+    }
+
+    function startCountdown() {
+      let n = parseInt(document.getElementById("countNum").value);
+      countdown(n);
+    }
+  </script>
+</body>
+</html>
