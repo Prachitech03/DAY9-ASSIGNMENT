@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head><title>Callback Calculator</title></head>
+<body>
+  <h2>Basic Calculator with Callback</h2>
+  <input type="number" id="num1" placeholder="First Number">
+  <input type="number" id="num2" placeholder="Second Number">
+  <select id="operation">
+    <option value="add">Add</option>
+    <option value="subtract">Subtract</option>
+    <option value="multiply">Multiply</option>
+    <option value="divide">Divide</option>
+  </select>
+  <button onclick="doCalculate()">Calculate</button>
+  <p id="calcResult"></p>
+
+  <script>
+    function calculate(a, b, operation) {
+      return operation(a, b);
+    }
+
+    const add = (x, y) => x + y;
+    const subtract = (x, y) => x - y;
+    const multiply = (x, y) => x * y;
+    const divide = (x, y) => y === 0 ? "Error" : x / y;
+
+    function doCalculate() {
+      let a = parseFloat(document.getElementById("num1").value);
+      let b = parseFloat(document.getElementById("num2").value);
+      let op = document.getElementById("operation").value;
+      let result;
+
+      switch (op) {
+        case "add": result = calculate(a, b, add); break;
+        case "subtract": result = calculate(a, b, subtract); break;
+        case "multiply": result = calculate(a, b, multiply); break;
+        case "divide": result = calculate(a, b, divide); break;
+      }
+
+      document.getElementById("calcResult").innerText = "Result: " + result;
+    }
+  </script>
+</body>
+</html>
