@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head><title>Even Checker</title></head>
+<body>
+  <h2>Even Number Checker </h2>
+  <input type="number" id="checkEven" placeholder="Enter number">
+  <button onclick="checkEven()">Check</button>
+  <p id="evenResult"></p>
+
+  <script>
+    function isEven(n) {
+      if (n < 0) return isEven(-n);
+      if (n === 0) return true;
+      if (n === 1) return false;
+      return isEven(n - 2);
+    }
+
+    function checkEven() {
+      let num = parseInt(document.getElementById("checkEven").value);
+      let result = isEven(num) ? "Even" : "Odd";
+      document.getElementById("evenResult").innerText = num + " is " + result;
+    }
+  </script>
+</body>
+</html>
