@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head><title>Digital Alarm</title></head>
+<body>
+  <h2>Set Alarm</h2>
+  <input type="datetime-local" id="alarmTime">
+  <input type="text" id="alarmMessage" placeholder="Alarm Message">
+  <button onclick="setAlarm()">Set Alarm</button>
+
+  <script>
+    function setAlarm() {
+      const time = document.getElementById("alarmTime").value;
+      const message = document.getElementById("alarmMessage").value;
+
+      const alarmTime = new Date(time);
+      const now = new Date();
+
+      const delay = alarmTime - now;
+
+      if (delay > 0) {
+        setTimeout(() => alert("⏰ Alarm: " + message), delay);
+        alert("Alarm is set!");
+      } else {
+        alert("Alarm time has already passed.");
+      }
+    }
+  </script>
+</body>
+</html>
